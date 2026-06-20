@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <script>
+        window.onload = inicio;
+
+        function inicio() {
+            let botao = document.getElementById('botao');
+            botao.addEventListener('click', envia);
+        }
+
+        function envia() {
+            let saida = document.getElementById('resultado');
+            const xhttp = new XMLHttpRequest(); // objeto responsável pelo envio e recebimento.
+
+            // função chamada quando carregar os dados (resposta)
+            xhttp.onload = function () {
+                // o que fazer com os dados
+                saida.innerHTML = (this.responseText);
+            }
+
+            // ajuste e envio dos dados
+            xhttp.open("GET", "http://localhost/pagina.php");
+            xhttp.send();
+        }
+    </script>
+</head>
+
+<body>
+    <button id="botao">Enviar</button>
+    <p id="resultado"></p>
+</body>
+
+</html>
